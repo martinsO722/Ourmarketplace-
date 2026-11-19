@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OurMarketplace.com | Digital Products, Physical Stores & Affiliate Hub</title>
+  <style>
+    /* =========================================
+       COLOR SYSTEM: WHITE, ROYAL BLUE & BLACK
+    ========================================= */
+    :root {
+      --bg-white: #FFFFFF;
+      --bg-soft: #F4F7FB;
+      --black: #0A0A0A;
+      --black-card: #141414;
+      --blue: #2563EB;
+      --blue-dark: #1D4ED8;
+      --blue-light: #EFF6FF;
+      --cyan-accent: #0EA5E9;
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
+      --success: #10B981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-white);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* =========================================
+       NAVIGATION BAR (JET BLACK)
+    ========================================= */
+    header {
+      background-color: var(--black);
+      color: var(--bg-white);
+      padding: 1rem 5%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--blue);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--bg-white);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--blue);
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: #E2E8F0;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--blue);
+    }
+
+    .btn {
+      padding: 0.65rem 1.25rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-blue {
+      background-color: var(--blue);
+      color: var(--bg-white);
+    }
+
+    .btn-blue:hover {
+      background-color: var(--blue-dark);
+    }
+
+    .btn-black {
+      background-color: var(--black);
+      color: var(--bg-white);
+      border: 1px solid #333;
+    }
+
+    .btn-black:hover {
+      background-color: #222;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 1.5px solid var(--blue);
+      color: var(--blue);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--blue);
+      color: var(--bg-white);
+    }
+
+    /* =========================================
+       HERO SECTION
+    ========================================= */
+    .hero {
+      background: linear-gradient(135deg, var(--black) 0%, #111827 65%, #1E3A8A 100%);
+      color: var(--bg-white);
+      padding: 4.5rem 5%;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background-color: rgba(37, 99, 235, 0.25);
+      border: 1px solid var(--blue);
+      color: #93C5FD;
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.75rem;
+      max-width: 820px;
+      margin: 0 auto 1rem;
+      line-height: 1.2;
+    }
+
+    .hero h1 span {
+      color: var(--blue);
+    }
+
+    .hero p {
+      color: #CBD5E1;
+      max-width: 650px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* =========================================
+       STATS BAR
+    ========================================= */
+    .stats-bar {
+      background-color: var(--bg-soft);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 5%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .stat-item h3 {
+      color: var(--blue);
+      font-size: 1.6rem;
+      font-weight: 800;
+    }
+
+    .stat-item p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* =========================================
+       MARKETPLACE SECTION
+    ========================================= */
+    .section {
+      padding: 4rem 5%;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+      color: var(--black);
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 0.5rem 1.1rem;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+      background: var(--bg-white);
+      color: var(--text-main);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .tab-btn.active {
+      background: var(--black);
+      color: var(--bg-white);
+      border-color: var(--black);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .card {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(10, 10, 10, 0.08);
+    }
+
+    .card-img {
+      height: 190px;
+      background-color: var(--black);
+      color: var(--bg-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      font-size: 2.5rem;
+      font-weight: 800;
+    }
+
+    .badge-type {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .badge-digital {
+      background-color: var(--blue);
+      color: var(--bg-white);
+    }
+
+    .badge-physical {
+      background-color: var(--black);
+      color: var(--bg-white);
+      border: 1px solid #444;
+    }
+
+    .badge-commission {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background-color: var(--bg-white);
+      color: var(--blue);
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .card-body {
+      padding: 1.25rem;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 0.4rem;
+    }
+
+    .vendor-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+      background: var(--bg-soft);
+      padding: 0.6rem;
+      border-radius: 6px;
+      border-left: 3px solid var(--blue);
+    }
+
+    .vendor-meta div {
+      margin-bottom: 0.2rem;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .price {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--black);
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .card-actions button {
+      flex: 1;
+      justify-content: center;
+    }
+
+    /* =========================================
+       TWO-TIER AFFILIATE EARNINGS HUB (BLACK & BLUE)
+    ========================================= */
+    .affiliate-hub {
+      background-color: var(--black);
+      color: var(--bg-white);
+      padding: 4.5rem 5%;
+    }
+
+    .affiliate-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .affiliate-info h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .affiliate-info h2 span {
+      color: var(--blue);
+    }
+
+    .tier-box {
+      background: var(--black-card);
+      border: 1px solid #262626;
+      border-left: 4px solid var(--blue);
+      padding: 1.1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .tier-box h4 {
+      color: var(--cyan-accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .calculator-card {
+      background: var(--bg-white);
+      color: var(--text-main);
+      padding: 2rem;
+      border-radius: 12px;
+      border-top: 5px solid var(--blue);
+    }
+
+    .calc-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .calc-group label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .calc-group input[type="range"] {
+      width: 100%;
+      accent-color: var(--blue);
+    }
+
+    .calc-result {
+      background: var(--blue-light);
+      border: 1px solid var(--blue);
+      padding: 1.2rem;
+      border-radius: 8px;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .calc-result span {
+      display: block;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--blue);
+    }
+
+    .ref-link-box {
+      display: flex;
+      margin-top: 1rem;
+      gap: 0.5rem;
+    }
+
+    .ref-link-box input {
+      flex: 1;
+      padding: 0.65rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--bg-soft);
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    /* =========================================
+       MODAL (LIST A PRODUCT)
+    ========================================= */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-box {
+      background: var(--bg-white);
+      width: 100%;
+      max-width: 500px;
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .modal-box h3 {
+      margin-bottom: 1rem;
+      color: var(--black);
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 0.65rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+    footer {
+      background: var(--black);
+      color: #94A3B8;
+      text-align: center;
+      padding: 2.5rem 5%;
+      border-top: 1px solid #222;
+    }
+
+    footer strong {
+      color: var(--bg-white);
+    }
+
+    /* Toast Notification */
+    #toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--black);
+      color: var(--bg-white);
+      border-left: 4px solid var(--blue);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      display: none;
+      z-index: 3000;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      nav a { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header>
+    <a href="#" class="logo">Our<span>Marketplace</span>.com</a>
+    <nav>
+      <a href="#marketplace">Explore Store</a>
+      <a href="#affiliate-hub">Affiliate Program</a>
+      <button class="btn btn-outline" onclick="openModal()">+ Sell Product</button>
+      <button class="btn btn-blue" onclick="showToast('Affiliate Dashboard Activated!')">Join Free</button>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-badge">DIGITAL E-BOOKS • LOCAL FASHION • 2-TIER AFFILIATE SYSTEM</div>
+    <h1>Buy, Sell & Earn Commissions on <span>OurMarketplace.com</span></h1>
+    <p>Upload digital e-books for instant download, list physical clothes & accessories with your shop location & contact, or earn daily commissions promoting products and inviting users.</p>
+    <div class="hero-actions">
+      <a href="#marketplace" class="btn btn-blue">Browse Marketplace</a>
+      <button class="btn btn-black" onclick="openModal()">List Your Product</button>
+      <a href="#affiliate-hub" class="btn btn-outline" style="color: white; border-color: white;">Start Earning as Affiliate</a>
+    </div>
+  </section>
+
+  <!-- LIVE STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <h3>100%</h3>
+      <p>Instant Digital Delivery</p>
+    </div>
+    <div class="stat-item">
+      <h3>Verified</h3>
+      <p>Vendor Locations & Contacts</p>
+    </div>
+    <div class="stat-item">
+      <h3>₦500 / User</h3>
+      <p>Affiliate Sign-Up Bonus</p>
+    </div>
+    <div class="stat-item">
+      <h3>Up to 40%</h3>
+      <p>Product Sales Commission</p>
+    </div>
+  </div>
+
+  <!-- MARKETPLACE LISTINGS -->
+  <section class="section" id="marketplace">
+    <div class="section-header">
+      <div>
+        <h2>Featured Products & Stores</h2>
+        <p style="color: var(--text-muted);">Buy directly or copy your affiliate link to earn on every sale.</p>
+      </div>
+      <div class="filter-tabs">
+        <button class="tab-btn active" onclick="filterProducts('all', this)">All Products</button>
+        <button class="tab-btn" onclick="filterProducts('digital', this)">Digital E-Books</button>
+        <button class="tab-btn" onclick="filterProducts('physical', this)">Clothes & Accessories</button>
+      </div>
+    </div>
+
+    <div class="product-grid" id="productGrid">
+      <!-- Products are injected dynamically by JavaScript -->
+    </div>
+  </section>
+
+  <!-- AFFILIATE MONETIZATION HUB -->
+  <section class="affiliate-hub" id="affiliate-hub">
+    <div class="affiliate-container">
+      <div class="affiliate-info">
+        <div class="hero-badge">DUAL-INCOME AFFILIATE ENGINE</div>
+        <h2>Get Paid Twice on <span>OurMarketplace</span></h2>
+        <p style="color: #CBD5E1; margin-bottom: 1.5rem;">You don't even need your own product to make money here. Monetize your audience in two ways:</p>
+        
+        <div class="tier-box">
+          <h4>1. Earn Per Invited User (Referral Bonus)</h4>
+          <p style="font-size: 0.9rem; color: #CBD5E1;">Share your master invite link. Every time someone registers and verifies their account through you, your wallet is credited automatically.</p>
+        </div>
+
+        <div class="tier-box">
+          <h4>2. Earn Product Sales Commissions</h4>
+          <p style="font-size: 0.9rem; color: #CBD5E1;">Promote any e-book, clothing item, or accessory listed by business owners and earn 10% to 40% per successful sale.</p>
+        </div>
+
+        <div class="ref-link-box">
+          <input type="text" id="masterRefLink" value="https://ourmarketplace.com/invite?ref=MARTINS_OC" readonly />
+          <button class="btn btn-blue" onclick="copyMasterLink()">Copy Invite Link</button>
+        </div>
+      </div>
+
+      <!-- EARNINGS CALCULATOR -->
+      <div class="calculator-card">
+        <h3 style="margin-bottom: 0.3rem; color: var(--black);">Affiliate Income Estimator</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.2rem;">Slide to see how much you can earn monthly:</p>
+
+        <div class="calc-group">
+          <label>People You Invite to Join: <span id="inviteCount" style="color: var(--blue);">25</span> users (₦500 each)</label>
+          <input type="range" id="inviteSlider" min="0" max="200" value="25" oninput="calculateEarnings()" />
+        </div>
+
+        <div class="calc-group">
+          <label>Products You Help Vendors Sell: <span id="salesCount" style="color: var(--blue);">15</span> sales (Avg. ₦2,500 commission)</label>
+          <input type="range" id="salesSlider" min="0" max="100" value="15" oninput="calculateEarnings()" />
+        </div>
+
+        <div class="calc-result">
+          <small style="font-weight: 700; color: var(--text-muted);">ESTIMATED TOTAL EARNINGS</small>
+          <span id="totalEarnings">₦50,000</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIST A PRODUCT MODAL -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal-box">
+      <h3>List a Product on OurMarketplace</h3>
+      <div class="form-group">
+        <label>Product Title</label>
+        <input type="text" id="pTitle" placeholder="e.g., Streetwear Cargo Pants or Wealth E-Book" />
+      </div>
+      <div class="form-group">
+        <label>Product Category</label>
+        <select id="pType">
+          <option value="digital">Digital Product (E-Book / Course / PDF)</option>
+          <option value="physical">Physical Item (Clothes / Accessories)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Price (₦)</label>
+        <input type="number" id="pPrice" placeholder="e.g., 5000" />
+      </div>
+      <div class="form-group">
+        <label>Affiliate Commission (%)</label>
+        <input type="number" id="pComm" placeholder="e.g., 25" max="70" />
+      </div>
+      <div class="form-group">
+        <label>Shop Location / Delivery Coverage</label>
+        <input type="text" id="pLocation" placeholder="e.g., Obosi / Onitsha, Anambra (Nationwide Delivery)" />
+      </div>
+      <div class="form-group">
+        <label>Vendor Contact (WhatsApp / Phone)</label>
+        <input type="text" id="pContact" placeholder="e.g., +234 800 000 0000" />
+      </div>
+      <div style="display: flex; gap: 0.6rem; margin-top: 1.2rem;">
+        <button class="btn btn-blue" style="flex: 1; justify-content: center;" onclick="addNewProduct()">Publish Listing</button>
+        <button class="btn btn-black" onclick="closeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>OurMarketplace.com</strong> — Empowering Digital Creators, Local Businesses & Affiliate Marketers.</p>
+    <p style="font-size: 0.85rem; margin-top: 0.5rem;">© 2026 OurMarketplace. All Rights Reserved.</p>
+  </footer>
+
+  <!-- TOAST MESSAGE -->
+  <div id="toast"></div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Sample Initial Products
+    const products = [
+      {
+        id: 101,
+        title: "A Million Ways to Make a Million (E-Book)",
+        type: "digital",
+        price: 5000,
+        commission: 30,
+        vendor: "Martins O.C. Digital",
+        location: "Instant PDF Download (Global)",
+        contact: "Verified Digital Vendor",
+        icon: "📘"
+      },
+      {
+        id: 102,
+        title: "Prime Fits Baggy Streetwear Denim",
+        type: "physical",
+        price: 18500,
+        commission: 15,
+        vendor: "Prime Fits Apparel",
+        location: "Obosi / Onitsha, Anambra State",
+        contact: "+234 803 555 0192",
+        icon: "👕"
+      },
+      {
+        id: 103,
+        title: "Luxury Chronograph Wristwatch & Chain Set",
+        type: "physical",
+        price: 25000,
+        commission: 20,
+        vendor: "Vanguard Accessories Hub",
+        location: "Lekki Phase 1, Lagos (Waybill Available)",
+        contact: "+234 812 444 8821",
+        icon: "⌚"
+      },
+      {
+        id: 104,
+        title: "Faceless YouTube & TikTok Growth Blueprint",
+        type: "digital",
+        price: 7500,
+        commission: 40,
+        vendor: "Creator Academy NG",
+        location: "Instant Download + Video Guide",
+        contact: "Verified Digital Vendor",
+        icon: "🚀"
+      }
+    ];
+
+    // Render Products
+    function renderProducts(filter = "all") {
+      const grid = document.getElementById("productGrid");
+      grid.innerHTML = "";
+
+      const filtered = filter === "all" ? products : products.filter(p => p.type === filter);
+
+      filtered.forEach(item => {
+        const earnAmount = ((item.price * item.commission) / 100).toLocaleString();
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <div>
+            <div class="card-img">
+              <span class="badge-type ${item.type === 'digital' ? 'badge-digital' : 'badge-physical'}">
+                ${item.type === 'digital' ? 'Digital E-Book' : 'Physical Store'}
+              </span>
+              <span>${item.icon}</span>
+              <span class="badge-commission">Earn ${item.commission}% (₦${earnAmount})</span>
+            </div>
+            <div class="card-body">
+              <div class="card-title">${item.title}</div>
+              <div class="vendor-meta">
+                <div><strong>Seller:</strong> ${item.vendor}</div>
+                <div><strong>📍 Location:</strong> ${item.location}</div>
+                <div><strong>📞 Contact:</strong> ${item.contact}</div>
+              </div>
+              <div class="price-row">
+                <span style="font-size: 0.85rem; color: var(--text-muted);">Price</span>
+                <span class="price">₦${item.price.toLocaleString()}</span>
+              </div>
+            </div>
+          </div>
+          <div style="padding: 0 1.25rem 1.25rem;">
+            <div class="card-actions">
+              <button class="btn btn-blue" onclick="buyProduct('${item.title}', ${item.price})">Buy Now</button>
+              <button class="btn btn-outline" onclick="copyProductAffiliate(${item.id}, ${item.commission})">Promote</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Filter Tabs
+    function filterProducts(category, btn) {
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderProducts(category);
+    }
+
+    // Copy Product Affiliate Link
+    function copyProductAffiliate(id, comm) {
+      const link = `https://ourmarketplace.com/p/${id}?aff=MARTINS_OC`;
+      navigator.clipboard?.writeText(link);
+      showToast(`Affiliate link copied! You earn ${comm}% on every sale.`);
+    }
+
+    // Copy Master Referral Link
+    function copyMasterLink() {
+      const input = document.getElementById("masterRefLink");
+      input.select();
+      navigator.clipboard?.writeText(input.value);
+      showToast("Master Invite Link copied! Earn ₦500 per verified user.");
+    }
+
+    // Buy Action Simulation
+    function buyProduct(title, price) {
+      showToast(`Redirecting to Paystack Checkout for "${title}" (₦${price.toLocaleString()})...`);
+    }
+
+    // Affiliate Calculator
+    function calculateEarnings() {
+      const invites = parseInt(document.getElementById("inviteSlider").value);
+      const sales = parseInt(document.getElementById("salesSlider").value);
+      document.getElementById("inviteCount").innerText = invites;
+      document.getElementById("salesCount").innerText = sales;
+
+      const total = (invites * 500) + (sales * 2500);
+      document.getElementById("totalEarnings").innerText = "₦" + total.toLocaleString();
+    }
+
+    // Modal Controls
+    function openModal() {
+      document.getElementById("productModal").style.display = "flex";
+    }
+    function closeModal() {
+      document.getElementById("productModal").style.display = "none";
+    }
+
+    // Add New Product Dynamically
+    function addNewProduct() {
+      const title = document.getElementById("pTitle").value.trim();
+      const type = document.getElementById("pType").value;
+      const price = parseInt(document.getElementById("pPrice").value);
+      const commission = parseInt(document.getElementById("pComm").value);
+      const location = document.getElementById("pLocation").value.trim();
+      const contact = document.getElementById("pContact").value.trim();
+
+      if (!title || !price || !commission || !location || !contact) {
+        showToast("Please fill in all vendor details.");
+        return;
+      }
+
+      products.unshift({
+        id: Date.now(),
+        title,
+        type,
+        price,
+        commission,
+        vendor: "New Verified Vendor",
+        location,
+        contact,
+        icon: type === "digital" ? "📄" : "🛍️"
+      });
+
+      renderProducts("all");
+      closeModal();
+      showToast("Product published live to OurMarketplace!");
+    }
+
+    // Toast Helper
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      toast.innerText = msg;
+      toast.style.display = "block";
+      setTimeout(() => { toast.style.display = "none"; }, 3500);
+    }
+
+    // Initialize Page
+    renderProducts();
+  </script>
+</body>
+</html>
